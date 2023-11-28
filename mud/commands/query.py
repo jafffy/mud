@@ -1,3 +1,4 @@
+from mud.content.place import place_map
 from mud.context import Context
 from mud.models.player import Player
 
@@ -18,3 +19,11 @@ class Stat:
         print(f"의지: {player.base_will}")
         print(f"행운: {player.base_luck}")
         print(f"\n경험치: {player.exp}")
+
+
+class Where:
+    command = 'where'
+
+    @staticmethod
+    def do(context: Context):
+        print(f"현재 위치: {place_map[context.where]}")

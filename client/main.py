@@ -1,7 +1,7 @@
 from mongoengine import *
 
 import mud.context
-from mud.commands.query import Stat
+from mud.commands.query import Stat, Where
 from mud.models.user import User
 
 
@@ -9,7 +9,10 @@ def main():
     connect('mud')
 
     context = mud.context.Context()
-    commands = { Stat.command: Stat.do }
+    commands = {
+        Stat.command: Stat.do,
+        Where.command: Where.do,
+    }
 
     username = input("username: ")
 
