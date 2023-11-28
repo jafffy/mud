@@ -1,6 +1,7 @@
 from mongoengine import *
 
 import mud.context
+from mud.commands.action import Talk
 from mud.commands.query import Stat, Where
 from mud.models.user import User
 
@@ -12,6 +13,7 @@ def main():
     commands = {
         Stat.command: Stat.do,
         Where.command: Where.do,
+        Talk.command: Talk.do,
     }
 
     username = input("username: ")
@@ -39,7 +41,7 @@ def main():
             print("명령어를 찾을 수 없습니다.")
             continue
 
-        commands[command[0]](context)
+        commands[command[0]](context, command[1:])
 
 
 if __name__ == '__main__':

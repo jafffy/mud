@@ -8,7 +8,7 @@ class Stat:
     command = 'stat'
 
     @staticmethod
-    def do(context: Context):
+    def do(context: Context, args: [str]):
         player = Player.objects(uuid=context.player_uuid).first()
 
         if player is None:
@@ -26,7 +26,7 @@ class Where:
     command = 'where'
 
     @staticmethod
-    def do(context: Context):
+    def do(context: Context, args: [str]):
         current_place = place_map[context.where]
 
         print(f"현재 위치: {current_place.name}")
