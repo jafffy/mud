@@ -19,6 +19,16 @@ class Talker(NPC):
 
         print(f"안녕, {player.name}. 난 토커라고 해!")
 
+        print("1) 여긴 어디야?")
+        print("2) 대화를 종료한다.")
+
+        selection = int(input())
+
+        if selection == 1:
+            print("여긴 머드의 세계야. 일종의 시뮬레이션이지.")
+        else:
+            return
+
 
 npc_map = {
     NPC_TALKER: Talker(name='토커')
