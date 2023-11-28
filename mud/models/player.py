@@ -11,3 +11,4 @@ class Player(Document):
     base_luck = IntField(required=True, default=0)
 
     money = IntField(required=True, default=0)
+    exp = IntField(required=True, default=0)
