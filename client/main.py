@@ -1,7 +1,7 @@
 from mongoengine import *
 
 import mud.context
-from mud.commands.action import Talk
+from mud.commands.action import Talk, Move
 from mud.commands.query import Stat, Where, Time
 from mud.models.user import User
 
@@ -15,6 +15,7 @@ def main():
         Where.command: Where.do,
         Talk.command: Talk.do,
         Time.command: Time.do,
+        Move.command: Move.do,
     }
 
     username = input("username: ")
