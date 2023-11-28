@@ -1,9 +1,15 @@
 from mongoengine import *
+
+import mud.context
+from mud.commands.query import Stat
 from mud.models.user import User
 
 
 def main():
     connect('mud')
+
+    context = mud.context.Context()
+    commands = { Stat.command: Stat.do }
 
     username = input("username: ")
 
@@ -14,6 +20,9 @@ def main():
     else:
         print(f"{username} 님, 접속을 환영합니다.")
 
+        # Context initialization
+        context.uuid = user.uuid
+
     while True:
         prompt = input("> ")
 
@@ -23,7 +32,11 @@ def main():
 
         command = prompt.strip().split(" ")
 
-        print(command)
+        if command[0] not in commands:
+            print("명령어를 찾을 수 없습니다.")
+            continue
+
+        commands[command[0]](context)
 
 
 if __name__ == '__main__':
