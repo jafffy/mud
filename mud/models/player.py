@@ -3,6 +3,7 @@ from mongoengine import Document, StringField, IntField
 
 class Player(Document):
     uuid = StringField(required=True)
+    name = StringField(required=True)
 
     base_str = IntField(required=True, default=0)
     base_dex = IntField(required=True, default=0)

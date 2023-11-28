@@ -20,4 +20,4 @@ class Talk:
             raise f"NPC ID {npc_id} is not found."
 
         npc = npc_map[npc_id]
-        print(f"{npc.name}: {npc.greeting}")
+        npc.do(context)
