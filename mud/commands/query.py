@@ -1,3 +1,4 @@
+from mud.content.actor.npc import npc_map
 from mud.content.place import place_map
 from mud.context import Context
 from mud.models.player import Player
@@ -26,4 +27,13 @@ class Where:
 
     @staticmethod
     def do(context: Context):
-        print(f"현재 위치: {place_map[context.where]}")
+        current_place = place_map[context.where]
+
+        print(f"현재 위치: {current_place.name}")
+
+        print(f"현재 위치의 NPC ({len(current_place.npcs)} 명)")
+
+        i = 1
+        for npc_id in current_place.npcs:
+            print(f"{i}) {npc_map[npc_id].name}")
+            i += 1
